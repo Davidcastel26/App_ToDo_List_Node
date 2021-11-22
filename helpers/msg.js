@@ -18,8 +18,31 @@ const showMenu = () => {
     console.log(`${ '5.'.brightGreen } Complete work(s)`);
     console.log(`${ '6.'.brightGreen } Delete work`);
     console.log(`${ '0.'.brightGreen } Exit\n`);
+
+    const readline = require('readline').createInterface({
+        input: process.stdin,
+        output: process.stdout
+    })
+
+    readline.question('Select an option now: ', (opt) => {
+        // console.log({opt});
+        readline.close();
+    })
+}
+
+//creating a stop for the app and try to 
+const pause = () => {
+    const readline = require('readline').createInterface({
+        input: process.stdin,
+        output: process.stdout
+    })
+
+    readline.question(`\n Press ${'ENTER'.magenta} to continue \n`, (opt) => {
+        readline.close();
+    })
 }
 
 module.exports = {
-    showMenu
+    showMenu,
+    pause
 }

@@ -2,7 +2,7 @@
 require('colors');
 
 // modules 
-const { showMenu } = require('./helpers/msg');
+const { showMenu, pause } = require('./helpers/msg');
 
 
 console.clear()
@@ -11,7 +11,7 @@ const main = async() => {
     console.log('hola mundo');
 
     showMenu()
-
+    // pause()
 }
 
 main();
