@@ -16,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/Davidcastel26/App_ToDo_List_Node/issues"
   },
-  "homepage": "https://github.com/Davidcastel26/App_ToDo_List_Node#readme"
+  "homepage": "https://github.com/Davidcastel26/App_ToDo_List_Node#readme",
+  "dependencies": {
+    "colors": "^1.4.0"
+  }
 }
