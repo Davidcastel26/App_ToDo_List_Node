@@ -7,6 +7,7 @@ const {
     inquirerMenu, 
     pause,
     readInput } = require('./helpers/inquirer');
+const { saveDB } = require('./helpers/recordFiles');
 // const Task = require('./models/task');
 const Tasks = require('./models/tasks');
 
@@ -37,6 +38,8 @@ const main = async() => {
             break;
         }
        
+        saveDB( tasks.listArr)
+
     //    tasks._list[tasks.id] = task;
     //    console.log(tasks);
         
