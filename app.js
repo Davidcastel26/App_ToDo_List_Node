@@ -16,18 +16,18 @@ const Tasks = require('./models/tasks');
 // console.clear()
 
 const main = async() => {
-    console.log('hola mundo');
+    // console.log('hola mundo');
 
     let opt = '';
     const tasks = new Tasks();
     // const task = new Task()
 
     //to read the db 
-    const tasksDB = readDB()
+    const tasksDB = readDB();
 
     if( tasksDB ){
         // set tasks
-        tasks.loadTasksFromArray()
+        tasks.loadTasksFromArray(tasksDB)
     }
 
     // await pause()
@@ -46,11 +46,18 @@ const main = async() => {
                 tasks.createTask(desc)
             break;
             case '2':
-                console.log(tasks.listArr);
+                tasks.listComplete()
+                // console.log(tasks.listArr);
+            break;
+            case '3':
+                tasks.listPendingsComplets(true)
+            break;
+            case '4':
+                tasks.listPendingsComplets(false)
             break;
         }
-       
-        saveDB( tasks.listArr)
+  
+        saveDB( tasks.listArr )
 
     //    tasks._list[tasks.id] = task;
     //    console.log(tasks);

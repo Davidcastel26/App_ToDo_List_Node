@@ -1,19 +1,18 @@
 //requires
-const fs = require('fs')
+const fs = require('fs');
 
 //global var
-const file = './db/data.json'
+const file = './db/data.json';
 
 const  saveDB = (data) => {
     
     fs.writeFileSync( file, JSON.stringify(data) );
 
-
 }
 
 const readDB = () => {
 
-    if(fs.existsSync(!file)){
+    if(!fs.existsSync(file)){
         return null;
     }
 
@@ -22,7 +21,7 @@ const readDB = () => {
     const data = JSON.parse( info )
     console.log(data);
 
-    return null;
+    return data;
 }
 
 module.exports = {
