@@ -12,8 +12,21 @@ const  saveDB = (data) => {
 }
 
 const readDB = () => {
+
+    if(fs.existsSync(!file)){
+        return null;
+    }
+
+    const info = fs.readFileSync( file, { encoding: 'utf-8'});
+    //if we don't use parse we won't get the array
+    const data = JSON.parse( info )
+    console.log(data);
+
+    return null;
 }
 
 module.exports = {
-    saveDB
+    saveDB,
+    readDB,
+
 }
