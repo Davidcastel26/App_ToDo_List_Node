@@ -13,13 +13,22 @@ class Tasks {
             const task = this._list[key];
             listt.push( task )
         })
-        
+
         return listt;
 
     }
 
     constructor(){
         this._list = {}
+    }
+
+    loadTasksFromArray( tasks = []){
+
+        // this._list[task.id] = task;
+        tasks.forEach(task => {
+            this._list[task.id] = task
+        })
+
     }
 
     createTask( desc = ''){
