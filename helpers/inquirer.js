@@ -96,6 +96,11 @@ const listTasksDelete = async(tasks = []) => {
     })
     // console.log(choices);
 
+    choices.unshift({
+        value:'0',
+        name: '0'.green + ' Cancel'
+    })
+
     const questions = [
         {
             type:'list',
@@ -105,8 +110,23 @@ const listTasksDelete = async(tasks = []) => {
         }
     ]
 
-    const { id } = await inquirer.prompt(choices);
+    const { id } = await inquirer.prompt(questions);
     return id;
+
+}
+
+const confrim = async(message) => {
+
+    const question = [
+        {
+            type:'confrim',
+            name: 'ok',
+            message
+        }
+    ];
+
+    const { ok } = await inquirer.prompt(question);
+    return ok;
 
 }
 
@@ -114,5 +134,6 @@ module.exports = {
     inquirerMenu,
     pause,
     readInput,
-    listTasksDelete
+    listTasksDelete,
+    confrim
 }

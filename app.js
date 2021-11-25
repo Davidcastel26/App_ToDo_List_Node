@@ -7,7 +7,8 @@ const {
     inquirerMenu, 
     pause,
     readInput,
-    listTasksDelete } = require('./helpers/inquirer');
+    listTasksDelete,
+    confrim } = require('./helpers/inquirer');
 
 const { saveDB, 
         readDB } = require('./helpers/recordFiles');
@@ -58,15 +59,23 @@ const main = async() => {
             break;
             case '6':
                 const id = await listTasksDelete( tasks.listArr )
-                console.log({id});
+                // if is 0 cancel operation to delete
+                if( id !== '0'){
+                    // ask if im sure to delete before delete it
+                    const agree = confrim('Really bro?')
+                    // console.log({id});
+                    //console.log({agree}); { agree: Promise { <pending> } }
+                    if ( agree ){
+                        tasks.deleteTast( id )
+                        console.log('Task was deleted succesfully');
+                    }
+                }
             break;
         }
   
         saveDB( tasks.listArr )
-
-    //    tasks._list[tasks.id] = task;
-    //    console.log(tasks);
-        
+    //  tasks._list[tasks.id] = task;
+    //  console.log(tasks);
         await pause()
 
     }while(opt !== '0')
