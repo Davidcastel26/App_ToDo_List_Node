@@ -22,6 +22,14 @@ class Tasks {
         this._list = {}
     }
 
+    deleteTast(id = ''){
+
+        if( this._list[id]){
+            delete this._list[id]
+        }
+
+    }
+
     loadTasksFromArray( tasks = []){
 
         // this._list[task.id] = task;
@@ -70,13 +78,14 @@ class Tasks {
                 //show completes
                 if( completedIn ){
                     counter +=1;
-                    console.log(`${ (counter + '.').green} ${desc} :: ${completedIn}`);
+                    console.log(`${ (counter + '.').green} ${desc} :: ${completedIn }`);
                 }
             }else{
                 // show pendings
                 if( !completedIn ){
                     counter +=1;
-                    console.log(`${ counter.toString().green}. ${desc} :: ${state}`);
+                    // console.log(`${ counter.toString().green}. ${desc} :: ${state}`);
+                    console.log(`${ (counter + '.').green}. ${desc} :: ${state}`);
                 }
             }                 
 
