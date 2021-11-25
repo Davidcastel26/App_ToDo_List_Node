@@ -130,10 +130,39 @@ const confrim = async(message) => {
 
 }
 
+const showListChecklist = async( tasks = []) => {
+
+    const choices = tasks.map( (task, indice) => {
+
+        const idx = `${indice + 1 }`.green;
+
+        return{
+            value: task.id,
+            name: `${ idx } ${task.desc}`,
+            checked: ( task.completedIn ) ? true : false
+        }
+    })
+
+    const question = [
+        {
+            type: 'check',
+            name: 'ids',
+            message:'Seleccions',
+            choices
+        }
+    ]
+
+    const {ids} = await inquirer.prompt(question);
+    return ids;
+
+}
+
+
 module.exports = {
     inquirerMenu,
     pause,
     readInput,
     listTasksDelete,
-    confrim
+    confrim,
+    showListChecklist
 }

@@ -8,7 +8,8 @@ const {
     pause,
     readInput,
     listTasksDelete,
-    confrim } = require('./helpers/inquirer');
+    confrim,
+    showListChecklist } = require('./helpers/inquirer');
 
 const { saveDB, 
         readDB } = require('./helpers/recordFiles');
@@ -51,11 +52,16 @@ const main = async() => {
                 tasks.listComplete()
                 // console.log(tasks.listArr);
             break;
-            case '3':
+            case '3': // list done
                 tasks.listPendingsComplets(true)
-            break;
-            case '4':
+            break; // pending list 
+             case '4':
                 tasks.listPendingsComplets(false)
+            break;
+            case '5':// complete or pending
+                const ids = await showListChecklist( tasks.listArr );
+                console.log(ids); // shows all the tasks selected
+                tasks.toggleCompletes(ids)
             break;
             case '6':
                 const id = await listTasksDelete( tasks.listArr )

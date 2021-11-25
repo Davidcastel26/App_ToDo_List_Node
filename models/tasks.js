@@ -78,7 +78,7 @@ class Tasks {
                 //show completes
                 if( completedIn ){
                     counter +=1;
-                    console.log(`${ (counter + '.').green} ${desc} :: ${completedIn }`);
+                    console.log(`${ (counter + '.').green} ${desc} :: ${completedIn.green }`);
                 }
             }else{
                 // show pendings
@@ -93,6 +93,28 @@ class Tasks {
 
     }
 
+    toggleCompletes( ids = []){
+
+        ids.forEach( id => {
+
+            const task = this._list[id];
+
+            if( !task.completedIn ){
+                task.completedIn = new Date().toISOString()
+            }
+
+        })
+
+        this.listArr.forEach( task =>{
+
+            if(!ids.includes(task.id) ){
+                const task = this._list[task.id];
+                task.completedIn = null;
+            }
+
+        })
+
+    }
 }
 
 module.exports = Tasks;
